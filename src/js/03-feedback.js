@@ -31,11 +31,16 @@ const onContactFormFieldInput = event => {
     message,
   };
 
+  if (email === '' || message === '') {
+    return alert('Заповніть усі поля');
+  }
+
   localStorage.setItem('feedback-form-state', JSON.stringify(userInfo));
 };
 
 const onContactFormFieldSubmit = event => {
   event.preventDefault();
+
   console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
 
   contactFormEl.reset();
